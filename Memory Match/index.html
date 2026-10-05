@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#080b20">
+	<meta name="description" content="Play Memory Match, a free puzzle game from FunFroge Games. Match every pair, test your memory and beat your best score.">
+	<title>Memory Match | FunFroge Games</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="game-container">
+		<header class="game-header">
+			<div>
+				<p class="brand">FUNFROGE <span>GAMES</span></p>
+				<h1>Memory Match</h1>
+				<p class="subtitle">Find all matching pairs!</p>
+			</div>
+			<nav class="hub-nav" aria-label="Game navigation">
+				<a href="../Game%20Hub/index.html">Home</a>
+				<a href="../Game%20Hub/index.html#games">Games</a>
+			</nav>
+			<div class="header-controls">
+				<div class="difficulty-box">
+					<label for="difficulty">Difficulty</label>
+					<select id="difficulty">
+						<option value="easy">Easy</option>
+						<option value="normal" selected>Normal</option>
+						<option value="hard">Hard</option>
+					</select>
+				</div>
+				<div class="header-buttons">
+					<button id="soundBtn" type="button" aria-pressed="true">🔊 Sound</button>
+					<button id="restartBtn" type="button">Restart</button>
+				</div>
+			</div>
+		</header>
+
+		<section class="stats" aria-label="Game statistics">
+			<div class="stat"><span>Moves</span><strong id="moves">0</strong></div>
+			<div class="stat"><span>Matches</span><strong id="matches">0 / 8</strong></div>
+			<div class="stat"><span>Time</span><strong id="time">00:00</strong></div>
+			<div class="stat"><span>Best Moves</span><strong id="bestScore">--</strong></div>
+			<div class="stat"><span>Score</span><strong id="score">--</strong></div>
+		</section>
+
+		<section class="game-area" aria-label="Memory card game">
+			<div id="boardStatus" class="board-status" role="status" aria-live="polite">Find the matching pairs!</div>
+			<div id="effectLayer" class="effect-layer" aria-hidden="true"></div>
+			<div id="gameBoard" class="game-board" aria-live="polite"></div>
+			<div id="message" class="message hidden" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+				<div class="win-icon" aria-hidden="true">🏆</div>
+				<h2 id="winTitle">Memory Master!</h2>
+				<p id="winMessage" class="win-subtitle">Amazing! You found every pair.</p>
+				<div id="newBest" class="new-best hidden" role="status">🏆 NEW BEST!</div>
+				<div class="final-stats">
+					<div class="final-stat final-score"><span>Score</span><strong id="finalScore">0</strong></div>
+					<div class="final-stat"><span>Moves</span><strong id="finalMoves">0</strong></div>
+					<div class="final-stat"><span>Time</span><strong id="finalTime">00:00</strong></div>
+					<div class="final-stat"><span>Matches</span><strong id="finalMatches">0/8</strong></div>
+					<div class="final-stat performance-stat"><span>Performance</span><strong id="finalRating" class="rating-stars" aria-label="No rating yet"></strong></div>
+				</div>
+				<button id="playAgainBtn" class="win-button" type="button">🔄 Play Again</button>
+				<a class="hub-return-link" href="../Game%20Hub/index.html#games">Back to Games</a>
+			</div>
+		</section>
+
+		<div id="comboDisplay" class="combo-display hidden" role="status" aria-live="polite">🔥 Combo x1!</div>
+
+		<section class="info-section" aria-labelledby="achievementsTitle">
+			<div class="section-heading">
+				<h2 id="achievementsTitle">🏅 ACHIEVEMENTS</h2>
+				<span class="section-kicker">Keep playing to unlock them all</span>
+			</div>
+			<div id="achievementsGrid" class="achievements-grid"></div>
+		</section>
+
+		<section class="info-section" aria-labelledby="statisticsTitle">
+			<div class="section-heading">
+				<h2 id="statisticsTitle">📊 PLAYER STATISTICS</h2>
+			</div>
+			<div class="statistics-grid">
+				<div class="stat-card"><span>Games Played</span><strong id="gamesPlayed">0</strong></div>
+				<div class="stat-card"><span>Games Won</span><strong id="gamesWon">0</strong></div>
+				<div class="stat-card"><span>Win Rate</span><strong id="winRate">0%</strong></div>
+				<div class="stat-card"><span>Highest Score</span><strong id="highestScore">0</strong></div>
+				<div class="stat-card"><span>Best Easy Moves</span><strong id="bestEasyMoves">--</strong></div>
+				<div class="stat-card"><span>Best Normal Moves</span><strong id="bestNormalMoves">--</strong></div>
+				<div class="stat-card"><span>Best Hard Moves</span><strong id="bestHardMoves">--</strong></div>
+				<div class="stat-card"><span>Best Easy Time</span><strong id="bestEasyTime">--</strong></div>
+				<div class="stat-card"><span>Best Normal Time</span><strong id="bestNormalTime">--</strong></div>
+				<div class="stat-card"><span>Best Hard Time</span><strong id="bestHardTime">--</strong></div>
+				<div class="stat-card"><span>5-Star Wins</span><strong id="fiveStarWins">0</strong></div>
+			</div>
+			<button id="resetDataBtn" class="reset-data-button" type="button">Reset Statistics</button>
+		</section>
+
+		<div id="achievementToast" class="achievement-toast" role="status" aria-live="polite"></div>
+
+		<p class="footer-note"><span class="dot"></span> A tiny game for a sharper mind</p>
+	</main>
+	<script src="script.js"></script>
+</body>
+</html>

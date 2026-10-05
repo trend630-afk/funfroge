@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#080b14">
+	<meta name="description" content="Play free online browser games at FunFroge Games. Enjoy puzzle, arcade, reaction and casual games on desktop and mobile.">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="FunFroge Games – Free Online Browser Games">
+	<meta property="og:description" content="Play free online browser games at FunFroge Games. Enjoy puzzle, arcade, reaction and casual games on desktop and mobile.">
+	<title>FunFroge Games – Free Online Browser Games</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header" id="home" data-nav-section>
+		<a class="wordmark" href="#home" aria-label="FunFroge Games home">
+			<span class="wordmark-icon" aria-hidden="true">F</span>
+			<span>FUNFROGE <strong>GAMES</strong></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="#home">Home</a>
+			<a href="#games">Games</a>
+			<a href="#about">About</a>
+			<a href="#contact">Contact</a>
+		</nav>
+		<a class="header-cta" href="#games">Play now <span aria-hidden="true">↗</span></a>
+	</header>
+
+	<main>
+		<section class="hero" aria-labelledby="hero-title">
+			<div class="hero-copy">
+				<p class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE PLAY GOES A LONG WAY</p>
+				<h1 id="hero-title">Play. Challenge.<br><span>Have Fun.</span></h1>
+				<p class="hero-lede">Free browser games you can play instantly.</p>
+				<div class="hero-actions">
+					<a class="button button-primary" href="#games">Play now <span aria-hidden="true">↗</span></a>
+				</div>
+				<div class="hero-note"><span class="note-rule"></span> PICK A GAME. FIND YOUR FLOW.</div>
+			</div>
+			<div class="hero-art" aria-hidden="true">
+				<div class="art-topline"><span>MEMORY MATCH</span><span>01 / 05</span></div>
+				<div class="memory-preview">
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-open">✦</div>
+					<div class="preview-card preview-open">✦</div>
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-symbol">◈</div>
+					<div class="preview-card preview-symbol">◈</div>
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-symbol">✧</div>
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-back">?</div>
+					<div class="preview-card preview-symbol">✧</div>
+				</div>
+				<div class="art-footer"><span><i></i> READY TO PLAY</span><span>4 PAIRS</span></div>
+			</div>
+			<div class="hero-index" aria-hidden="true">FFG <span>—</span> 2026</div>
+		</section>
+
+		<section class="games-section content-width" id="games" data-nav-section aria-labelledby="games-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">THE ARCADE</p>
+					<h2 id="games-title">Our games</h2>
+				</div>
+				<p class="section-aside">Small games. Big replay energy.</p>
+			</div>
+			<div class="library-controls">
+				<label class="game-search" for="gameSearch">
+					<span>Search games</span>
+					<input id="gameSearch" type="search" placeholder="Search games..." autocomplete="off">
+				</label>
+				<div class="category-filters" role="group" aria-label="Filter games by category">
+					<button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+					<button class="filter-button" type="button" data-filter="puzzle" aria-pressed="false">Puzzle</button>
+					<button class="filter-button" type="button" data-filter="arcade" aria-pressed="false">Arcade</button>
+					<button class="filter-button" type="button" data-filter="reaction" aria-pressed="false">Reaction</button>
+					<button class="filter-button" type="button" data-filter="strategy" aria-pressed="false">Strategy</button>
+				</div>
+				<p class="game-count" id="gameCount" role="status" aria-live="polite">5 Games Available</p>
+			</div>
+			<p class="no-games-message" id="noGamesMessage" hidden>No games match that search and category.</p>
+
+			<div class="game-grid">
+				<article class="game-card" data-categories="puzzle memory">
+					<div class="game-art memory-art" aria-hidden="true">
+						<div class="art-orbit orbit-one"></div>
+						<div class="art-orbit orbit-two"></div>
+						<div class="mini-card mini-card-a">✦</div>
+						<div class="mini-card mini-card-b">◈</div>
+						<div class="mini-card mini-card-c">✦</div>
+						<span class="art-caption">MATCH THE PAIRS</span>
+					</div>
+					<div class="game-card-body">
+						<div class="card-title-row">
+							<div>
+								<p class="card-category">Puzzle / Memory</p>
+								<h3>Memory Match</h3>
+							</div>
+						</div>
+						<p class="game-description">Test your memory and match all the cards.</p>
+						<a class="button button-game" href="../Memory%20Match/index.html" aria-label="Play Memory Match">Play now <span aria-hidden="true">↗</span></a>
+					</div>
+				</article>
+
+				<article class="game-card" data-categories="arcade reaction">
+					<div class="game-art target-art" aria-hidden="true">
+						<div class="target-ring ring-outer"></div><div class="target-ring ring-inner"></div><span>✦</span>
+					</div>
+					<div class="game-card-body">
+						<div class="card-title-row"><div><p class="card-category">Arcade / Reaction</p><h3>Neon Target Rush</h3></div></div>
+						<p class="game-description">Test your speed and hit glowing targets before time runs out.</p>
+						<a class="button button-game" href="../Neon%20Target%20Rush/index.html" aria-label="Play Neon Target Rush">Play now <span aria-hidden="true">↗</span></a>
+					</div>
+				</article>
+
+				<article class="game-card" data-categories="puzzle strategy">
+					<div class="game-art merge-art" aria-hidden="true">
+						<div class="merge-tiles"><span>2</span><span>4</span><span>8</span><span>16</span></div>
+					</div>
+					<div class="game-card-body">
+						<div class="card-title-row"><div><p class="card-category">Puzzle / Strategy</p><h3>Number Merge</h3></div></div>
+						<p class="game-description">Merge matching numbers and build your highest score.</p>
+						<a class="button button-game" href="../Number%20Merge/index.html" aria-label="Play Number Merge">Play now <span aria-hidden="true">↗</span></a>
+					</div>
+				</article>
+
+				<article class="game-card" data-categories="arcade survival">
+					<div class="game-art space-art" aria-hidden="true">
+						<div class="space-star star-one">✦</div><div class="space-star star-two">·</div><div class="space-ship">➤</div>
+					</div>
+					<div class="game-card-body">
+						<div class="card-title-row"><div><p class="card-category">Arcade / Survival</p><h3>Space Dodger</h3></div></div>
+						<p class="game-description">Dodge asteroids, survive longer and beat your high score.</p>
+						<a class="button button-game" href="../Space%20Dodger/index.html" aria-label="Play Space Dodger">Play now <span aria-hidden="true">↗</span></a>
+					</div>
+				</article>
+
+				<article class="game-card" data-categories="reaction skill">
+					<div class="game-art reaction-art" aria-hidden="true">
+						<div class="reaction-rings"><span></span><span></span><span></span></div>
+						<div class="reaction-dot"></div>
+					</div>
+					<div class="game-card-body">
+						<div class="card-title-row"><div><p class="card-category">Reaction / Skill</p><h3>Reaction Rush</h3></div></div>
+						<p class="game-description">Test your reaction speed and set a new personal record.</p>
+						<a class="button button-game" href="../Reaction%20Rush/index.html" aria-label="Play Reaction Rush">Play now <span aria-hidden="true">↗</span></a>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section class="about-section" id="about" data-nav-section aria-labelledby="about-title">
+			<div class="about-inner content-width">
+				<p class="eyebrow">BUILT AROUND THE JOY OF PLAY</p>
+				<div class="about-copy">
+					<h2 id="about-title">About FunFroge Games</h2>
+					<p>FunFroge Games is a browser gaming project focused on creating simple, enjoyable and challenging games that can be played instantly without downloading software.</p>
+				</div>
+				<a class="about-link" href="#games">Find your next game <span aria-hidden="true">↗</span></a>
+			</div>
+		</section>
+
+		<section class="contact-section" id="contact" data-nav-section aria-labelledby="contact-title">
+			<div class="contact-inner content-width">
+				<div>
+					<p class="eyebrow">GET IN TOUCH</p>
+					<h2 id="contact-title">Contact</h2>
+					<p>Have feedback or found a problem?<br>We'd love to hear from you.</p>
+				</div>
+				<p class="contact-email"><span>Contact email</span><strong>YOUR-EMAIL-HERE</strong></p>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="footer-brand">
+			<a class="footer-wordmark" href="#home">FUNFROGE <span>GAMES</span></a>
+			<p class="footer-description">Free browser games made for quick fun and challenging gameplay.</p>
+			<p class="footer-copyright">© 2026 FunFroge Games</p>
+		</div>
+		<nav class="footer-nav" aria-label="Footer navigation">
+			<a href="#home">Home</a><a href="#games">Games</a><a href="#about">About</a><a href="#contact">Contact</a>
+			<a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a>
+		</nav>
+	</footer>
+</body>
+</html>

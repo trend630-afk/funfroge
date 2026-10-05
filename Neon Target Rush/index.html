@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#090d12">
+	<meta name="description" content="Play Neon Target Rush, a fast-paced free reaction game from FunFroge Games. Test your speed and beat your high score.">
+	<title>Neon Target Rush – FunFroge Games</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="wordmark" href="../Game%20Hub/index.html" aria-label="FunFroge Games home">
+			<span class="wordmark-mark" aria-hidden="true">F</span>
+			<span>FUNFROGE <strong>GAMES</strong></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="../Game%20Hub/index.html">Home</a>
+			<a href="../Game%20Hub/index.html#games">Games</a>
+		</nav>
+		<button class="sound-button" id="soundButton" type="button" aria-pressed="true" aria-label="Turn sound off">
+			<span class="sound-icon" aria-hidden="true">♪</span>
+			<span id="soundLabel">Sound on</span>
+		</button>
+	</header>
+
+	<main class="game-shell">
+		<section class="game-intro" aria-labelledby="game-title">
+			<p class="eyebrow"><span class="live-dot" aria-hidden="true"></span> REACTION ARCADE <span class="eyebrow-divider">/</span> 30 SECONDS</p>
+			<h1 id="game-title">Neon <span>Target</span> Rush</h1>
+			<p class="intro-copy">Trust your reflexes. Catch the glow. Chase your best.</p>
+		</section>
+
+		<section class="game-panel" aria-label="Neon Target Rush game">
+			<dl class="scoreboard" aria-label="Current game statistics">
+				<div class="stat stat-score"><dt>Score</dt><dd id="scoreValue">0</dd></div>
+				<div class="stat"><dt>Time</dt><dd id="timerValue" role="timer" aria-label="30 seconds remaining">00:30</dd></div>
+				<div class="stat"><dt>Hits</dt><dd id="hitsValue">0</dd></div>
+				<div class="stat"><dt>Combo</dt><dd id="comboValue">x1</dd></div>
+				<div class="stat stat-best"><dt>Best</dt><dd id="bestValue">0</dd></div>
+			</dl>
+
+			<div class="playfield" id="playfield" aria-label="Target play area">
+				<div class="playfield-grid" aria-hidden="true"></div>
+				<div class="field-label" aria-hidden="true"><span>LIVE ZONE</span><span id="fieldState">READY</span></div>
+				<div class="combo-toast" id="comboToast" aria-hidden="true"></div>
+				<div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+				<button class="target" id="target" type="button" aria-label="Hit the glowing target" hidden>
+					<span class="target-core" aria-hidden="true"></span>
+				</button>
+				<div class="playfield-overlay" id="gameOverlay" aria-labelledby="overlayTitle">
+					<div class="overlay-content">
+						<p class="overlay-kicker" id="overlayKicker">30-SECOND CHALLENGE</p>
+						<h2 id="overlayTitle">Ready to rush?</h2>
+						<p class="overlay-copy" id="overlayCopy">Hit each neon target for 100 points. Combos add up to 100 bonus points.</p>
+						<div class="round-results" id="roundResults" hidden>
+							<div><span>Score</span><strong id="finalScore">0</strong></div>
+							<div><span>Hits</span><strong id="finalHits">0</strong></div>
+							<div><span>Accuracy</span><strong id="finalAccuracy">0%</strong></div>
+							<div><span>Best score</span><strong id="finalBest">0</strong></div>
+						</div>
+						<p class="record-message" id="newBestMessage" hidden>🏆 NEW BEST!</p>
+						<button class="start-button" id="startButton" type="button">
+							<span id="startButtonLabel">Start game</span>
+							<span class="button-arrow" aria-hidden="true">↗</span>
+						</button>
+						<a class="back-games-link" href="../Game%20Hub/index.html#games">Back to games <span aria-hidden="true">↗</span></a>
+					</div>
+				</div>
+			</div>
+			<p class="playfield-help" id="playfieldHelp">Click or tap the target. Empty taps break your combo.</p>
+		</section>
+		<p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite"></p>
+	</main>
+
+	<footer class="site-footer">
+		<span>© 2026 FunFroge Games</span>
+		<span class="footer-note">QUICK HANDS. CLEAR MIND.</span>
+	</footer>
+</body>
+</html>

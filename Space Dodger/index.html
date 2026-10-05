@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#080c12">
+	<meta name="description" content="Play Space Dodger, a free arcade survival game from FunFroge Games. Dodge asteroids, collect shields and beat your high score.">
+	<title>Space Dodger – FunFroge Games</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="wordmark" href="../Game%20Hub/index.html" aria-label="FunFroge Games home">
+			<span class="wordmark-mark" aria-hidden="true">F</span>
+			<span>FUNFROGE <strong>GAMES</strong></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="../Game%20Hub/index.html">Home</a>
+			<a href="../Game%20Hub/index.html#games">Games</a>
+		</nav>
+		<button class="sound-button" id="soundButton" type="button" aria-pressed="true" aria-label="Turn sound off">
+			<span class="sound-icon" aria-hidden="true">♪</span>
+			<span id="soundLabel">Sound on</span>
+		</button>
+	</header>
+
+	<main class="game-shell">
+		<section class="game-heading" aria-labelledby="gameTitle">
+			<div>
+				<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> DEEP SPACE / SURVIVAL RUN</p>
+				<h1 id="gameTitle">Space <span>Dodger</span></h1>
+				<p class="intro-copy">Stay sharp. Keep moving. Make it back in one piece.</p>
+			</div>
+		</section>
+
+		<section class="game-panel" aria-label="Space Dodger game">
+			<dl class="scoreboard" aria-label="Game statistics">
+				<div class="stat"><dt>Score</dt><dd id="scoreValue">0</dd></div>
+				<div class="stat"><dt>Survival time</dt><dd id="survivalValue">00:00</dd></div>
+				<div class="stat stat-best"><dt>Best score</dt><dd id="bestValue">0</dd></div>
+				<div class="stat stat-lives"><dt>Lives</dt><dd id="livesValue" aria-label="3 lives remaining">3 / 3</dd></div>
+			</dl>
+
+			<div class="status-row">
+				<span class="sector-status"><span class="status-dot" aria-hidden="true"></span><span id="sectorLabel">SECTOR 01</span></span>
+				<span class="shield-status" id="shieldStatus" role="status" aria-live="polite"><span aria-hidden="true">&#x1f6e1;</span> <span id="shieldLabel">SHIELD OFFLINE</span></span>
+			</div>
+
+			<div class="game-stage" id="gameStage">
+				<canvas id="gameCanvas" aria-label="Space Dodger play field. Move left and right to avoid asteroids and collect shields." role="img">Space Dodger game area.</canvas>
+				<div class="stage-vignette" aria-hidden="true"></div>
+				<div class="game-overlay" id="gameOverlay">
+					<div class="overlay-content">
+						<p class="overlay-kicker" id="overlayKicker">READY FOR LAUNCH</p>
+						<h2 id="overlayTitle">Clear skies.<br>For now.</h2>
+						<p class="overlay-copy" id="overlayCopy">Dodge the asteroid field. Collect a shield and see how long you can last.</p>
+						<div class="final-stats" id="finalStats" hidden>
+							<div><span>Final score</span><strong id="finalScore">0</strong></div>
+							<div><span>Survival time</span><strong id="finalTime">00:00</strong></div>
+							<div><span>Best score</span><strong id="finalBest">0</strong></div>
+						</div>
+						<p class="record-message" id="recordMessage" hidden>🏆 NEW BEST!</p>
+						<button class="launch-button" id="startButton" type="button"><span id="startButtonLabel">Start game</span><span aria-hidden="true">↗</span></button>
+						<a class="back-games" id="backGamesLink" href="../Game%20Hub/index.html#games" hidden>Back to games <span aria-hidden="true">↗</span></a>
+					</div>
+				</div>
+				<div class="hit-flash" id="hitFlash" aria-hidden="true"></div>
+			</div>
+
+			<div class="touch-controls" aria-label="Touch movement controls">
+				<button class="move-button" id="moveLeftButton" type="button" aria-label="Move spaceship left"><span aria-hidden="true">←</span><small>LEFT</small></button>
+				<p>MOVE SHIP</p>
+				<button class="move-button" id="moveRightButton" type="button" aria-label="Move spaceship right"><span aria-hidden="true">→</span><small>RIGHT</small></button>
+			</div>
+			<p class="control-hint"><span class="keyboard-hint">← → &nbsp; or &nbsp; A / D</span><span class="hint-divider" aria-hidden="true">·</span><span>Drag or hold a direction</span></p>
+		</section>
+		<p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite"></p>
+	</main>
+
+	<footer class="site-footer">
+		<span>© 2026 FunFroge Games</span>
+		<span class="footer-note">STAY IN THE FLIGHT PATH</span>
+	</footer>
+</body>
+</html>

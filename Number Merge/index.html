@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#090d12">
+	<meta name="description" content="Play Number Merge, a free number puzzle game from FunFroge Games. Merge matching numbers, build your highest score and challenge yourself.">
+	<title>Number Merge – FunFroge Games</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="wordmark" href="../Game%20Hub/index.html" aria-label="FunFroge Games home">
+			<span class="wordmark-mark" aria-hidden="true">F</span>
+			<span>FUNFROGE <strong>GAMES</strong></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="../Game%20Hub/index.html">Home</a>
+			<a href="../Game%20Hub/index.html#games">Games</a>
+		</nav>
+		<button class="sound-button" id="soundButton" type="button" aria-pressed="true" aria-label="Turn sound off">
+			<span class="sound-icon" aria-hidden="true">♪</span>
+			<span id="soundLabel">Sound on</span>
+		</button>
+	</header>
+
+	<main class="game-shell">
+		<section class="game-heading" aria-labelledby="game-title">
+			<div class="heading-copy">
+				<p class="eyebrow"><span class="eyebrow-mark" aria-hidden="true">04</span> THE NUMBER ARCADE</p>
+				<h1 id="game-title">Number <span>Merge</span></h1>
+				<p class="intro-copy">Slide matching tiles together. Keep the board moving.</p>
+			</div>
+			<dl class="scoreboard" aria-label="Game scores">
+				<div class="score-card">
+					<dt>Score</dt>
+					<dd id="scoreValue">0</dd>
+				</div>
+				<div class="score-card score-card-best">
+					<dt>Best</dt>
+					<dd id="bestValue">0</dd>
+				</div>
+			</dl>
+		</section>
+
+		<div class="game-toolbar" aria-label="Game controls">
+			<button class="button button-primary" id="newGameButton" type="button">New game</button>
+			<button class="button button-secondary" id="undoButton" type="button" disabled aria-label="Undo previous move">Undo</button>
+			<button class="sound-button toolbar-sound" id="toolbarSoundButton" type="button" aria-pressed="true" aria-label="Turn sound off">
+				<span class="sound-icon" aria-hidden="true">♪</span>
+				<span id="toolbarSoundLabel">Sound on</span>
+			</button>
+		</div>
+
+		<div class="game-layout">
+			<section class="board-column" aria-label="Number Merge board area">
+				<div class="board-frame">
+					<div class="board" id="board" role="grid" aria-label="Number Merge 4 by 4 board" aria-rowcount="4" aria-colcount="4" tabindex="0"></div>
+					<section class="game-over-panel" id="gameOverPanel" aria-labelledby="gameOverTitle" hidden>
+						<p class="panel-kicker">NO MORE MOVES</p>
+						<h2 id="gameOverTitle" aria-live="assertive">GAME OVER</h2>
+						<div class="final-results">
+							<div><span>Final score</span><strong id="finalScore">0</strong></div>
+							<div><span>Best score</span><strong id="finalBest">0</strong></div>
+						</div>
+						<p class="new-best-message" id="newBestMessage" hidden>🏆 NEW BEST!</p>
+						<button class="button button-primary try-again-button" id="tryAgainButton" type="button">Try again</button>
+						<a class="game-over-back-link" href="../Game%20Hub/index.html#games">Back to Games</a>
+					</section>
+				</div>
+				<p class="win-notice" id="winNotice" role="status" aria-live="polite" hidden></p>
+				<p class="board-hint" id="boardHint">Arrow keys or W / A / S / D to move <span aria-hidden="true">·</span> Swipe to slide</p>
+			</section>
+
+			<aside class="game-aside" aria-label="How to play">
+				<div class="aside-mark" aria-hidden="true"><span>2</span><b>+</b><span>2</span><i>→</i><strong>4</strong></div>
+				<h2>Build a bigger number.</h2>
+				<p>Slide the board to merge matching tiles. Every valid move adds a new tile. Reach 2048 to unlock a new milestone, then keep going.</p>
+				<div class="aside-rule"></div>
+				<p class="aside-footnote"><span class="status-dot" aria-hidden="true"></span> One move at a time. Find your rhythm.</p>
+			</aside>
+		</div>
+		<p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite"></p>
+	</main>
+
+	<footer class="site-footer">
+		<span>© 2026 FunFroge Games</span>
+		<span class="footer-note">THINK AHEAD. KEEP MERGING.</span>
+	</footer>
+</body>
+</html>

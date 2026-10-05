@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#090d12">
+	<meta name="description" content="Play Reaction Rush, a free reaction-time game from FunFroge Games. Test your speed, improve your reaction time and beat your high score.">
+	<title>Reaction Rush – FunFroge Games</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<header class="site-header">
+		<a class="wordmark" href="../Game%20Hub/index.html" aria-label="FunFroge Games home">
+			<span class="wordmark-mark" aria-hidden="true">F</span>
+			<span>FUNFROGE <strong>GAMES</strong></span>
+		</a>
+		<nav class="main-nav" aria-label="Main navigation">
+			<a href="../Game%20Hub/index.html">Home</a>
+			<a href="../Game%20Hub/index.html#games">Games</a>
+		</nav>
+		<button class="sound-button" id="soundButton" type="button" aria-pressed="true" aria-label="Turn sound off">
+			<span class="sound-icon" aria-hidden="true">♪</span>
+			<span id="soundLabel">Sound on</span>
+		</button>
+	</header>
+
+	<main class="game-shell">
+		<section class="game-heading" aria-labelledby="gameTitle">
+			<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> QUICK RESPONSE / FIVE ROUNDS</p>
+			<h1 id="gameTitle">Reaction <span>Rush</span></h1>
+			<p class="intro-copy">Wait for the signal. Trust your reflexes. Go.</p>
+		</section>
+
+		<section class="game-panel" aria-label="Reaction Rush game">
+			<dl class="scoreboard" aria-label="Game statistics">
+				<div class="stat"><dt>Score</dt><dd id="scoreValue">0</dd></div>
+				<div class="stat stat-best"><dt>Best score</dt><dd id="bestScoreValue">0</dd></div>
+				<div class="stat"><dt>Reaction time</dt><dd id="reactionValue">—</dd></div>
+				<div class="stat stat-best-time"><dt>Best reaction</dt><dd id="bestReactionValue">—</dd></div>
+				<div class="stat"><dt>Round</dt><dd id="roundValue">0 / 5</dd></div>
+				<div class="stat"><dt>Average</dt><dd id="averageValue">—</dd></div>
+			</dl>
+
+			<div class="game-stage" id="reactionStage" data-state="start">
+				<div class="stage-grid" aria-hidden="true"></div>
+				<button class="reaction-pad" id="reactionPad" type="button" aria-label="Reaction area. Wait for the CLICK NOW signal.">
+					<span class="signal-ring ring-outer" aria-hidden="true"></span>
+					<span class="signal-ring ring-inner" aria-hidden="true"></span>
+					<span class="signal-icon" id="signalIcon" aria-hidden="true">R</span>
+					<strong class="signal-message" id="signalMessage">REACTION RUSH</strong>
+					<span class="signal-caption" id="signalCaption">Test your reaction speed!</span>
+				</button>
+
+				<section class="screen-panel start-panel" id="startPanel" aria-labelledby="startTitle">
+					<div class="panel-content">
+						<p class="panel-kicker">FIVE-ROUND CHALLENGE</p>
+						<h2 id="startTitle">REACTION RUSH</h2>
+						<p class="panel-copy">Test your reaction speed! Wait for <strong>CLICK NOW!</strong>, then tap as fast as you can.</p>
+						<button class="action-button" id="startButton" type="button">Start game <span aria-hidden="true">↗</span></button>
+					</div>
+				</section>
+
+				<section class="screen-panel results-panel" id="resultsPanel" aria-labelledby="resultsTitle" hidden>
+					<div class="panel-content results-content">
+						<p class="panel-kicker">CHALLENGE COMPLETE</p>
+						<h2 id="resultsTitle">REACTION RUSH RESULTS</h2>
+						<div class="results-grid">
+							<div><span>Score</span><strong id="finalScore">0</strong></div>
+							<div><span>Best score</span><strong id="finalBestScore">0</strong></div>
+							<div><span>Average reaction</span><strong id="finalAverage">—</strong></div>
+							<div><span>Fastest reaction</span><strong id="finalFastest">—</strong></div>
+							<div><span>Slowest reaction</span><strong id="finalSlowest">—</strong></div>
+							<div><span>Rating</span><strong class="rating-value" id="finalRating">🎯 KEEP PRACTICING</strong></div>
+						</div>
+						<p class="record-message" id="newBestMessage" hidden>🏆 NEW BEST!</p>
+						<p class="failed-rounds" id="failedRounds" hidden></p>
+						<button class="action-button play-again-button" id="playAgainButton" type="button">Play again <span aria-hidden="true">↗</span></button>
+						<a class="back-games-link" href="../Game%20Hub/index.html#games">Back to games <span aria-hidden="true">↗</span></a>
+					</div>
+				</section>
+				<div class="score-pop" id="scorePop" aria-hidden="true"></div>
+			</div>
+			<p class="stage-hint" id="stageHint">Tap, click, or press Enter / Space when the signal appears.</p>
+		</section>
+		<p class="sr-only" id="gameAnnouncement" role="status" aria-live="polite"></p>
+	</main>
+
+	<footer class="site-footer">
+		<span>© 2026 FunFroge Games</span>
+		<span class="footer-note">WAIT FOR IT. THEN GO.</span>
+	</footer>
+</body>
+</html>
