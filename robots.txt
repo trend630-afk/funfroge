@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trend630-afk.github.io/funfroge/sitemap.xml
