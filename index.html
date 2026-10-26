@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="iga6OK8EvlN-212xRMoKIfvyMnZRNwwrxJqLpU9_YwQ">
+
   <title>FunFroge Games – Free Online Browser Games</title>
-  <meta name="description" content="Play free online browser games at FunFroge Games. Explore memory games, arcade challenges, and more without downloading anything.">
+  <meta name="description" content="Play free online browser games at FunFroge Games. Challenge your memory, test your reactions, and enjoy arcade games without downloads.">
   <link rel="canonical" href="https://trend630-afk.github.io/funfroge/">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="FunFroge Games – Free Online Browser Games">
-  <meta property="og:description" content="Discover free browser games, test your memory, and take on arcade challenges at FunFroge Games.">
+  <meta property="og:description" content="Play free memory and arcade games online at FunFroge Games. No downloads required.">
   <meta property="og:url" content="https://trend630-afk.github.io/funfroge/">
 
   <!-- Google Analytics -->
@@ -25,44 +26,285 @@
   </script>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px;
-      line-height: 1.6;
-      color: #222;
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: #141d33;
+      --text: #f5f7ff;
+      --muted: #b5bfd6;
+      --cyan: #50e6ff;
+      --purple: #a78bfa;
     }
-    header, main, footer { margin-bottom: 28px; }
-    .games a { display: block; margin: 12px 0; }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid #27324d;
+      background: #0e1528;
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 14px 0;
+    }
+
+    .brand {
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .hero {
+      padding: 76px 0 58px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #24376a 0%, var(--bg) 68%);
+    }
+
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 14px auto;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.12;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 18px auto 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: var(--cyan);
+      color: #07111e;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .15s ease, filter .15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .section { padding: 42px 0; }
+
+    .section-heading {
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 5px;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+      gap: 22px;
+    }
+
+    .game-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: 250px;
+      padding: 24px;
+      border: 1px solid #2b3858;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #1a2744, var(--panel));
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .16);
+    }
+
+    .game-icon {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      margin-bottom: 14px;
+      border-radius: 15px;
+      background: #24385c;
+      font-size: 1.9rem;
+    }
+
+    .game-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.3rem;
+    }
+
+    .game-card p {
+      flex: 1;
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+
+    .game-card .button {
+      background: var(--purple);
+    }
+
+    .about {
+      margin: 14px 0 50px;
+      padding: 28px;
+      border: 1px solid #2b3858;
+      border-radius: 18px;
+      background: #111a2e;
+    }
+
+    .about p { color: var(--muted); }
+
+    footer {
+      border-top: 1px solid #27324d;
+      padding: 28px 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a { text-decoration: none; }
+    .footer-links a:hover { color: var(--cyan); }
+
+    @media (max-width: 600px) {
+      .nav { justify-content: center; }
+      .hero { padding: 54px 0 42px; }
+      .game-card { min-height: 220px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Welcome to FunFroge Games</h1>
-    <p>Discover free online browser games you can play directly in your browser, without downloading anything.</p>
+  <header class="topbar">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="./">🎮 FunFroge Games</a>
+      <div class="nav-links">
+        <a href="#games">Games</a>
+        <a href="Game%20Hub/index.html">Game Hub</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
   </header>
 
   <main>
-    <section>
-      <h2>Play Our Free Online Games</h2>
-      <div class="games">
-        <a href="Game%20Hub/index.html">Explore the Game Hub</a>
-        <a href="Memory%20Match/">Play Memory Match</a>
-        <a href="Neon%20Target%20Rush/">Play Neon Target Rush</a>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Play • Challenge • Repeat</div>
+        <h1>Welcome to FunFroge Games</h1>
+        <p>Discover free online browser games, challenge your memory, test your reactions, and enjoy quick gaming sessions without downloading anything.</p>
+        <a class="button" href="#games">Explore Our Games ↓</a>
       </div>
     </section>
 
-    <section>
-      <h2>What You Can Play</h2>
-      <p>Challenge your memory, test your reactions, and explore arcade-style gameplay with FunFroge Games.</p>
+    <section class="section container" id="games">
+      <div class="section-heading">
+        <h2>Choose Your Game</h2>
+        <p>Pick a challenge and start playing in your browser.</p>
+      </div>
+
+      <div class="games-grid">
+        <article class="game-card">
+          <div class="game-icon" aria-hidden="true">🧠</div>
+          <h3>Memory Match</h3>
+          <p>Flip cards, find matching pairs, and challenge yourself to improve your memory game score.</p>
+          <a class="button" href="Memory%20Match/">Play Memory Match</a>
+        </article>
+
+        <article class="game-card">
+          <div class="game-icon" aria-hidden="true">🎯</div>
+          <h3>Neon Target Rush</h3>
+          <p>Test your aim and reaction speed in this colourful arcade-style target challenge.</p>
+          <a class="button" href="Neon%20Target%20Rush/">Play Neon Target Rush</a>
+        </article>
+
+        <article class="game-card">
+          <div class="game-icon" aria-hidden="true">🕹️</div>
+          <h3>Game Hub</h3>
+          <p>Visit the FunFroge game collection to explore more browser gaming experiences.</p>
+          <a class="button" href="Game%20Hub/index.html">Explore Game Hub</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="container about">
+      <h2>About FunFroge Games</h2>
+      <p>FunFroge Games brings browser-based gaming experiences together in one place. Explore memory challenges and arcade-style games on desktop or mobile. No game download is required; availability depends on your browser and device.</p>
     </section>
   </main>
 
   <footer>
-    <a href="contact.html">Contact</a> |
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms of Use</a>
+    <div class="container">
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </nav>
+      <small>© FunFroge Games. Enjoy playing!</small>
+    </div>
   </footer>
 </body>
 </html>
