@@ -995,3 +995,90 @@ button:active {
 		display: none;
 	}
 }
+
+/* FunFroge Memory Match — visual polish */
+.game-container {
+  width: min(1080px, 100%);
+  background: linear-gradient(
+    145deg,
+    rgba(15, 22, 54, 0.97),
+    rgba(5, 8, 25, 0.97)
+  );
+  border-color: rgba(80, 230, 255, 0.38);
+  box-shadow:
+    0 0 35px rgba(0, 229, 255, 0.10),
+    0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+.game-header {
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(80, 230, 255, 0.15);
+}
+
+.stats .stat,
+.achievement-card,
+.stat-card {
+  background: linear-gradient(
+    145deg,
+    rgba(29, 40, 78, 0.75),
+    rgba(13, 19, 44, 0.85)
+  );
+  border-color: rgba(135, 155, 220, 0.16);
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stats .stat:hover,
+.achievement-card.unlocked:hover,
+.stat-card:hover {
+  border-color: rgba(80, 230, 255, 0.42);
+}
+
+.game-board {
+  gap: clamp(8px, 1.5vw, 15px);
+}
+
+.card-front {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(80, 230, 255, 0.12), transparent 55%),
+    linear-gradient(145deg, #131d40, #10152f);
+  border-color: rgba(80, 230, 255, 0.42);
+}
+
+.card-back {
+  background: linear-gradient(145deg, #12c9f5, #7650ed);
+}
+
+button,
+.hub-nav a,
+.hub-return-link {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+.hub-nav a:focus-visible,
+.hub-return-link:focus-visible,
+#difficulty:focus-visible {
+  outline: 3px solid #a78bfa;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .game-header {
+    padding-bottom: 18px;
+  }
+
+  .hub-nav {
+    flex-wrap: wrap;
+  }
+
+  .stats .stat {
+    min-width: 0;
+  }
+
+  .stat span {
+    overflow-wrap: anywhere;
+  }
+}
