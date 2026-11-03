@@ -1071,6 +1071,17 @@ a:focus-visible {
 		font-size: 12px;
 	}
 
+	.category-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.filter-button {
+    width: 100%;
+    min-height: 44px;
+}
+
 	.hero {
 		grid-template-columns: 1fr;
 		gap: 32px;
@@ -1384,4 +1395,19 @@ a:focus-visible {
 	.legal-content li {
 		font-size: 13px;
 	}
+}
+/* Mobile category filter layout fix */
+@media (max-width: 600px) {
+    .category-filters {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .category-filters .filter-button {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 10px 4px;
+    }
 }
