@@ -1252,5 +1252,18 @@ button:focus-visible,
         grid-template-columns: 1fr;
     }
 }
+/* Softer, premium Memory Match card colours */
+.card-back {
+    background: linear-gradient(145deg, #527da8, #625b9b) !important;
+    box-shadow: 0 5px 16px rgba(20, 25, 55, 0.28) !important;
+}
 
+.card.matched .card-back {
+    box-shadow: 0 0 14px rgba(126, 190, 210, 0.22) !important;
+}
+
+.card-front {
+    border-color: rgba(135, 175, 210, 0.28) !important;
+    box-shadow: 0 0 8px rgba(100, 150, 200, 0.06) !important;
+}
 
