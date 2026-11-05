@@ -890,3 +890,24 @@ a:focus-visible,
         grid-template-columns: 1fr;
     }
 }
+/* Visual indicator when Remove Tile mode is active */
+.board.remove-mode {
+    outline: 3px solid var(--cyan);
+    outline-offset: 5px;
+    box-shadow: 0 0 18px rgba(71, 238, 225, 0.3);
+    cursor: crosshair;
+}
+
+.board.remove-mode .tile {
+    cursor: crosshair;
+    animation: removeTilePulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes removeTilePulse {
+    from {
+        filter: brightness(1);
+    }
+    to {
+        filter: brightness(1.3);
+    }
+}

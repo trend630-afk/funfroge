@@ -544,13 +544,42 @@ function handleKeydown(event) {
 }
 
 function handlePointerDown(event) {
-	if (event.pointerType === "mouse" && event.button !== 0) return;
-	swipeStart = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
-	try {
-		boardElement.setPointerCapture(event.pointerId);
-	} catch {
-		swipeStart = { x: event.clientX, y: event.clientY, pointerId: event.pointerId };
-	}
+    if (removeMode) {
+        const tileElement = event.target.closest(".tile");
+
+        if (tileElement && boardElement.contains(tileElement)) {
+            const tileId = Number(tileElement.dataset.tileId);
+            const index = board.findIndex(
+                tile => tile && tile.id === tileId
+            );
+
+            if (index !== -1) {
+                event.preventDefault();
+                removeSelectedTile(index);
+            }
+        }
+
+        swipeStart = null;
+        return;
+    }
+
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    swipeStart = {
+        x: event.clientX,
+        y: event.clientY,
+        pointerId: event.pointerId
+    };
+
+    try {
+        boardElement.setPointerCapture(event.pointerId);
+    } catch {
+        swipeStart = {
+            x: event.clientX,
+            y: event.clientY,
+            pointerId: event.pointerId
+        };
+    }
 }
 
 function handlePointerUp(event) {
@@ -579,14 +608,17 @@ boardElement.addEventListener("click", (event) => {
     if (!removeMode) return;
 
     const tileElement = event.target.closest(".tile");
-    if (!tileElement) return;
+
+    if (!tileElement || !boardElement.contains(tileElement)) return;
 
     const tileId = Number(tileElement.dataset.tileId);
-    const index = board.findIndex(tile => tile?.id === tileId);
+    const index = board.findIndex(
+        tile => tile && tile.id === tileId
+    );
 
-    if (index !== -1) {
-        removeSelectedTile(index);
-    }
+    if (index === -1) return;
+
+    removeSelectedTile(index);
 });
 boardElement.addEventListener("pointerup", handlePointerUp);
 boardElement.addEventListener("pointercancel", () => { swipeStart = null; });
