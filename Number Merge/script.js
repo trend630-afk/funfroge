@@ -19,7 +19,14 @@ const newBestMessage = document.querySelector("#newBestMessage");
 const tryAgainButton = document.querySelector("#tryAgainButton");
 const winNotice = document.querySelector("#winNotice");
 const gameAnnouncement = document.querySelector("#gameAnnouncement");
+const shuffleButton = document.querySelector("#shuffleButton");
+const removeButton = document.querySelector("#removeButton");
+const doubleButton = document.querySelector("#doubleButton");
 
+const shuffleCountElement = document.querySelector("#shuffleCount");
+const removeCountElement = document.querySelector("#removeCount");
+const doubleCountElement = document.querySelector("#doubleCount");
+const powerupMessage = document.querySelector("#powerupMessage");
 let board = Array(BOARD_CELLS).fill(null);
 let score = 0;
 let bestScore = loadBestScore();
@@ -33,7 +40,11 @@ let soundEnabled = true;
 let audioContext = null;
 let winNoticeTimeout = null;
 let swipeStart = null;
-
+let shuffleUses = 3;
+let removeUses = 3;
+let doubleUses = 2;
+let removeMode = false;
+let doubleNextMerge = false;
 const cellElements = Array.from({ length: BOARD_CELLS }, (_, index) => {
 	const cell = document.createElement("div");
 	cell.className = "cell";
@@ -110,8 +121,101 @@ function captureTileRects() {
 	});
 	return rects;
 }
+function updatePowerupButtons() {
+    shuffleCountElement.textContent = shuffleUses;
+    removeCountElement.textContent = removeUses;
+    doubleCountElement.textContent = doubleUses;
 
-function updateScoreboard(animateScore = false) {
+    shuffleButton.disabled = shuffleUses <= 0 || gameOver;
+    removeButton.disabled = removeUses <= 0 || gameOver;
+    doubleButton.disabled = doubleUses <= 0 || gameOver;
+
+    boardElement.classList.toggle("remove-mode", removeMode);
+}
+function savePowerupUndo() {
+    undoHistory.push({
+        board: cloneBoard(board),
+        score: score
+    });
+
+    if (undoHistory.length > MAX_UNDO_MOVES) {
+        undoHistory.shift();
+    }
+}
+
+function useShuffle() {
+    if (gameOver || shuffleUses <= 0) return;
+
+    const previousRects = captureTileRects();
+    const occupiedIndexes = [];
+
+    board.forEach((tile, index) => {
+        if (tile) occupiedIndexes.push(index);
+    });
+
+    if (occupiedIndexes.length < 2) {
+        powerupMessage.textContent = "Not enough tiles to shuffle.";
+        return;
+    }
+
+    savePowerupUndo();
+
+    const tiles = occupiedIndexes.map(index => board[index]);
+
+    for (let i = tiles.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+    }
+
+    occupiedIndexes.forEach((index, i) => {
+        board[index] = tiles[i];
+    });
+
+    shuffleUses--;
+    powerupMessage.textContent = "🔀 Tiles shuffled! Plan your next move.";
+    renderBoard({ previousRects });
+    updatePowerupButtons();
+}
+
+function useRemove() {
+    if (gameOver || removeUses <= 0) return;
+
+    removeMode = !removeMode;
+
+    powerupMessage.textContent = removeMode
+        ? "💥 Select a tile on the board to remove it."
+        : "Tile removal cancelled.";
+
+    updatePowerupButtons();
+}
+
+function useDouble() {
+    if (gameOver || doubleUses <= 0 || doubleNextMerge) return;
+
+    doubleUses--;
+    doubleNextMerge = true;
+
+    powerupMessage.textContent =
+        "✨ Double points activated! Your next merge earns double points.";
+
+    updatePowerupButtons();
+}
+
+function removeSelectedTile(index) {
+    if (!removeMode || gameOver || !board[index]) return;
+
+    savePowerupUndo();
+
+    board[index] = null;
+    removeUses--;
+    removeMode = false;
+
+    powerupMessage.textContent = "💥 Tile removed! Keep building your score.";
+
+    renderBoard();
+    updatePowerupButtons();
+}
+function updateScoreboard(animateScore = false) {	
 	scoreElement.textContent = formatNumber(score);
 	bestElement.textContent = formatNumber(bestScore);
 	undoButton.disabled = undoHistory.length === 0;
@@ -180,6 +284,14 @@ function startNewGame() {
 	wonThisGame = false;
 	newBestThisGame = false;
 	recordSoundPlayed = false;
+	shuffleUses = 3;
+removeUses = 3;
+doubleUses = 2;
+removeMode = false;
+doubleNextMerge = false;
+
+powerupMessage.textContent = "Power-ups are ready. Choose your strategy!";
+updatePowerupButtons();
 	gameOverPanel.hidden = true;
 	newBestMessage.hidden = true;
 	gameAnnouncement.textContent = "New game started. Use the arrow keys or W, A, S, D to move.";
@@ -252,7 +364,12 @@ function applyMove(direction) {
 
 	const changed = nextBoard.some((tile, index) => (tile?.id ?? null) !== (board[index]?.id ?? null));
 	if (!changed) return false;
-
+if (gainedScore > 0 && doubleNextMerge) {
+    gainedScore *= 2;
+    doubleNextMerge = false;
+    powerupMessage.textContent = "✨ Double points awarded!";
+    updatePowerupButtons();
+}
 	undoHistory.push({ board: previousBoard, score });
 	if (undoHistory.length > MAX_UNDO_MOVES) undoHistory.shift();
 	board = nextBoard;
@@ -458,10 +575,26 @@ function handleAnimationEnd(event) {
 scoreElement.addEventListener("animationend", () => scoreElement.classList.remove("is-updated"));
 window.addEventListener("keydown", handleKeydown);
 boardElement.addEventListener("pointerdown", handlePointerDown);
+boardElement.addEventListener("click", (event) => {
+    if (!removeMode) return;
+
+    const tileElement = event.target.closest(".tile");
+    if (!tileElement) return;
+
+    const tileId = Number(tileElement.dataset.tileId);
+    const index = board.findIndex(tile => tile?.id === tileId);
+
+    if (index !== -1) {
+        removeSelectedTile(index);
+    }
+});
 boardElement.addEventListener("pointerup", handlePointerUp);
 boardElement.addEventListener("pointercancel", () => { swipeStart = null; });
 boardElement.addEventListener("animationend", handleAnimationEnd);
 newGameButton.addEventListener("click", startNewGame);
+shuffleButton.addEventListener("click", useShuffle);
+removeButton.addEventListener("click", useRemove);
+doubleButton.addEventListener("click", useDouble);
 undoButton.addEventListener("click", undoMove);
 soundButton.addEventListener("click", toggleSound);
 toolbarSoundButton.addEventListener("click", toggleSound);

@@ -835,3 +835,58 @@ a:focus-visible,
 		transition-duration: 0.01ms !important;
 	}
 }
+/* Number Merge - Power-up panel */
+.powerup-panel {
+    margin: 0 0 18px;
+    padding: 17px;
+    border: 1px solid rgba(71, 238, 225, 0.22);
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(23, 33, 42, 0.96), rgba(17, 24, 32, 0.96));
+}
+
+.powerup-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 13px;
+}
+
+.powerup-heading h2 {
+    margin: 0;
+    color: var(--cyan);
+    font-size: 15px;
+}
+
+.powerup-heading span,
+#powerupMessage {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.powerup-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.powerup-controls button {
+    flex: 1 1 130px;
+}
+
+#powerupMessage {
+    margin: 12px 0 0;
+    min-height: 14px;
+}
+
+@media (max-width: 460px) {
+    .powerup-panel {
+        padding: 12px;
+    }
+
+    .powerup-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

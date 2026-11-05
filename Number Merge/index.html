@@ -52,7 +52,28 @@
 				<span id="toolbarSoundLabel">Sound on</span>
 			</button>
 		</div>
+<section class="powerup-panel" aria-label="Game power-ups">
+    <div class="powerup-heading">
+        <h2>⚡ Power-ups</h2>
+        <span>Use strategy to beat your best score</span>
+    </div>
 
+    <div class="powerup-controls">
+        <button class="button button-secondary" id="shuffleButton" type="button">
+            🔀 Shuffle <span id="shuffleCount">3</span>
+        </button>
+        <button class="button button-secondary" id="removeButton" type="button">
+            💥 Remove tile <span id="removeCount">3</span>
+        </button>
+        <button class="button button-secondary" id="doubleButton" type="button">
+            ✨ Double points <span id="doubleCount">2</span>
+        </button>
+    </div>
+
+    <p id="powerupMessage" role="status" aria-live="polite">
+        Power-ups are ready. Choose your strategy!
+    </p>
+</section>
 		<div class="game-layout">
 			<section class="board-column" aria-label="Number Merge board area">
 				<div class="board-frame">
