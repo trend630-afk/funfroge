@@ -761,7 +761,7 @@ will-change: transform;
 
 	.wordmark-mark {
 		width: 29px;
-		height: 29px;
+		height: 29px;}
 
 	.game-shell {
 		width: calc(100% - 24px);
