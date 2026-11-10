@@ -765,3 +765,111 @@ a:focus-visible {
 		transition-duration: 0.01ms !important;
 	}
 }
+/* NEON TARGET RUSH — UPGRADE STYLES */
+
+.target.is-gold {
+    border-color: #ffd76a;
+    color: #ffd76a;
+    background: radial-gradient(circle, rgba(255, 215, 106, .35), rgba(255, 165, 0, .08) 58%, transparent 72%);
+    box-shadow: 0 0 18px rgba(255, 205, 80, .65), inset 0 0 14px rgba(255, 205, 80, .2);
+}
+
+.target.is-slow {
+    border-color: #969bff;
+    color: #b6b9ff;
+    background: radial-gradient(circle, rgba(140, 145, 255, .3), rgba(100, 90, 255, .08) 58%, transparent 72%);
+    box-shadow: 0 0 20px rgba(140, 145, 255, .65), inset 0 0 14px rgba(140, 145, 255, .2);
+}
+
+.target.is-decoy {
+    border-color: #ff668e;
+    color: #ff668e;
+    background: radial-gradient(circle, rgba(255, 70, 120, .25), rgba(150, 20, 60, .08) 58%, transparent 72%);
+    box-shadow: 0 0 18px rgba(255, 70, 120, .55), inset 0 0 14px rgba(255, 70, 120, .18);
+}
+
+.target.is-moving {
+    animation: neonTargetDrift var(--drift-duration, 1.15s) ease-in-out infinite alternate;
+}
+
+@keyframes neonTargetDrift {
+    from { transform: translate(-7px, 5px) scale(.96); }
+    to { transform: translate(7px, -5px) scale(1.04); }
+}
+
+.neon-upgrade-hud {
+    position: absolute;
+    z-index: 4;
+    top: 42px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    pointer-events: none;
+}
+
+.neon-upgrade-chip {
+    padding: 6px 9px;
+    border: 1px solid rgba(71, 238, 225, .2);
+    border-radius: 4px;
+    background: rgba(8, 13, 19, .88);
+    color: #b9cbc5;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .06em;
+}
+
+.neon-upgrade-chip strong {
+    color: #ffd76a;
+}
+
+.neon-share-button {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 8px;
+    border: 1px solid rgba(71, 238, 225, .5);
+    border-radius: 5px;
+    background: rgba(71, 238, 225, .08);
+    color: #47eee1;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.neon-share-button:hover {
+    background: rgba(71, 238, 225, .16);
+}
+
+@media (max-width: 500px) {
+    .neon-upgrade-hud {
+        gap: 4px;
+    }
+
+    .neon-upgrade-chip {
+        padding: 5px 6px;
+        font-size: 8px;
+    }
+}
+/* FIX: Keep all results buttons accessible */
+.playfield-overlay {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 24px 20px;
+}
+
+.overlay-content {
+    flex: 0 0 auto;
+    margin: auto 0;
+    padding-bottom: 12px;
+}
+
+.neon-share-button {
+    margin-bottom: 12px;
+}
