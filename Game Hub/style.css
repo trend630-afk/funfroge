@@ -1411,3 +1411,50 @@ a:focus-visible {
         padding: 10px 4px;
     }
 }
+/* Featured Memory Match card */
+.game-card-featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.game-card-featured .game-art {
+    height: 100%;
+    min-height: 260px;
+}
+
+.game-card-featured .game-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 28px;
+}
+
+.game-card-featured .card-category::before {
+   content: "FEATURED GAME · ";
+    color: #a78bfa;
+    font-weight: 800;
+}
+
+@media (max-width: 900px) {
+    .game-card-featured {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-card-featured {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+    }
+
+    .game-card-featured .game-art {
+        min-height: 155px;
+    }
+
+    .game-card-featured .game-card-body {
+        padding: 20px;
+    }
+}
