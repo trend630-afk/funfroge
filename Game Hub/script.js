@@ -58,3 +58,29 @@ if ("IntersectionObserver" in window) {
 
 	pageSections.forEach((section) => sectionObserver.observe(section));
 }
+
+/* FUNFROGE — 3D ARCADE CARD MOVEMENT */
+
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".game-card").forEach((card) => {
+        card.addEventListener("mousemove", (event) => {
+            const rect = card.getBoundingClientRect();
+
+            const x = (event.clientX - rect.left) / rect.width;
+            const y = (event.clientY - rect.top) / rect.height;
+
+            const rotateY = (x - 0.5) * 12;
+            const rotateX = (0.5 - y) * 12;
+
+            card.style.setProperty("--tilt-x", `${rotateX}deg`);
+            card.style.setProperty("--tilt-y", `${rotateY}deg`);
+            card.classList.add("is-tilting");
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.classList.remove("is-tilting");
+            card.style.removeProperty("--tilt-x");
+            card.style.removeProperty("--tilt-y");
+        });
+    });
+}

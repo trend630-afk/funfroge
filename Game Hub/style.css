@@ -1458,3 +1458,36 @@ a:focus-visible {
         padding: 20px;
     }
 }
+
+/* FUNFROGE — 3D ARCADE CARD EFFECT */
+
+.game-card {
+    transform-style: preserve-3d;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.game-card.is-tilting {
+    transform:
+        perspective(1000px)
+        rotateX(var(--tilt-x, 0deg))
+        rotateY(var(--tilt-y, 0deg))
+        translateY(-5px);
+
+    border-color: rgba(103, 241, 228, 0.65);
+    box-shadow:
+        0 22px 44px rgba(0, 0, 0, 0.34),
+        0 0 28px rgba(103, 241, 228, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game-card {
+        transition: none;
+    }
+
+    .game-card.is-tilting {
+        transform: none;
+    }
+}
