@@ -36,36 +36,70 @@
 	</header>
 
 	<main>
-		<section class="hero" aria-labelledby="hero-title">
-			<div class="hero-copy">
-				<p class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE PLAY GOES A LONG WAY</p>
-				<h1 id="hero-title">Play. Challenge.<br><span>Have Fun.</span></h1>
-				<p class="hero-lede">Free browser games you can play instantly.</p>
-				<div class="hero-actions">
-					<a class="button button-primary" href="#games">Play now <span aria-hidden="true">↗</span></a>
-				</div>
-				<div class="hero-note"><span class="note-rule"></span> PICK A GAME. FIND YOUR FLOW.</div>
-			</div>
-			<div class="hero-art" aria-hidden="true">
-				<div class="art-topline"><span>MEMORY MATCH</span><span>01 / 05</span></div>
-				<div class="memory-preview">
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-open">✦</div>
-					<div class="preview-card preview-open">✦</div>
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-symbol">◈</div>
-					<div class="preview-card preview-symbol">◈</div>
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-symbol">✧</div>
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-back">?</div>
-					<div class="preview-card preview-symbol">✧</div>
-				</div>
-				<div class="art-footer"><span><i></i> READY TO PLAY</span><span>4 PAIRS</span></div>
-			</div>
-			<div class="hero-index" aria-hidden="true">FFG <span>—</span> 2026</div>
-		</section>
+<section class="hero hero-3d" aria-labelledby="hero-title">
+    <div class="hero-glow hero-glow-one"></div>
+    <div class="hero-glow hero-glow-two"></div>
+    <div class="hero-grid"></div>
+
+    <div class="hero-copy">
+        <p class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            WELCOME TO THE NEXT LEVEL
+        </p>
+
+        <h1 id="hero-title">
+            ENTER THE<br>
+            <span>ARCADE.</span>
+        </h1>
+
+        <p class="hero-lede">
+            Play free. Beat challenges. Make every moment legendary.
+        </p>
+
+        <div class="hero-actions">
+            <a class="button button-primary" href="#games">
+                PLAY NOW <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+
+        <div class="hero-note">
+            <span class="note-rule"></span>
+            YOUR NEXT ADVENTURE STARTS HERE
+        </div>
+    </div>
+
+    <div class="hero-art hero-art-3d" aria-hidden="true">
+        <div class="arcade-orbit orbit-one"></div>
+        <div class="arcade-orbit orbit-two"></div>
+
+        <div class="arcade-core">
+            <div class="core-ring"></div>
+            <div class="core-symbol">FF</div>
+            <div class="core-caption">FUNFROGE</div>
+        </div>
+
+        <div class="floating-tile tile-one">✦</div>
+        <div class="floating-tile tile-two">◈</div>
+        <div class="floating-tile tile-three">⚡</div>
+        <div class="floating-tile tile-four">★</div>
+
+        <div class="arcade-status status-top">
+            <span class="status-dot"></span>
+            ARCADE ONLINE
+        </div>
+
+        <div class="arcade-status status-bottom">
+            <span>01</span>
+            <span>PRESS START</span>
+            <span>∞</span>
+        </div>
+    </div>
+
+    <div class="hero-index" aria-hidden="true">
+        FFG <span>—</span> 2026
+    </div>
+</section>
+
 
 		<section class="games-section content-width" id="games" data-nav-section aria-labelledby="games-title">
 			<div class="section-heading">
@@ -92,27 +126,33 @@
 			<p class="no-games-message" id="noGamesMessage" hidden>No games match that search and category.</p>
 
 			<div class="game-grid">
-				<article class="game-card game-card-featured" data-categories="puzzle memory">
+				
+<article class="game-card game-card-featured" data-categories="puzzle memory">
+    <div class="game-art memory-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="mini-card mini-card-a">✦</div>
+        <div class="mini-card mini-card-b">◈</div>
+        <div class="mini-card mini-card-c">✦</div>
+        <span class="art-caption">MATCH THE PAIRS</span>
+    </div>
 
-					<div class="game-art memory-art" aria-hidden="true">
-						<div class="art-orbit orbit-one"></div>
-						<div class="art-orbit orbit-two"></div>
-						<div class="mini-card mini-card-a">✦</div>
-						<div class="mini-card mini-card-b">◈</div>
-						<div class="mini-card mini-card-c">✦</div>
-						<span class="art-caption">MATCH THE PAIRS</span>
-					</div>
-					<div class="game-card-body">
-						<div class="card-title-row">
-							<div>
-								<p class="card-category">Puzzle / Memory</p>
-								<h3>Memory Match</h3>
-							</div>
-						</div>
-						<p class="game-description">Test your memory and match all the cards.</p>
-						<a class="button button-game" href="../Memory%20Match/index.html" aria-label="Play Memory Match">Play now <span aria-hidden="true">↗</span></a>
-					</div>
-				</article>
+    <div class="game-card-body">
+        <div class="card-title-row">
+            <div>
+                <p class="card-category">Puzzle / Memory</p>
+                <h3>Memory Match</h3>
+            </div>
+        </div>
+
+        <p class="game-description">Test your memory and match all the cards.</p>
+
+        <a class="button button-game" href="../Memory%20Match/index.html" aria-label="Play Memory Match">
+            Play now <span aria-hidden="true">↗</span>
+        </a>
+    </div>
+</article>
+
 
 				<article class="game-card" data-categories="arcade reaction">
 					<div class="game-art target-art" aria-hidden="true">
