@@ -933,3 +933,25 @@ will-change: transform;
         filter: brightness(1.3);
     }
 }
+<script>
+(() => {
+    try {
+        const profile = JSON.parse(
+            localStorage.getItem("funfrogePlayerProfile") || "null"
+        );
+        const validAvatars = ["🎮", "👾", "🚀", "🦊", "🐸", "🤖"];
+        const name = typeof profile?.name === "string"
+            ? profile.name.trim().slice(0, 18)
+            : "";
+        const avatar = validAvatars.includes(profile?.avatar)
+            ? profile.avatar
+            : "🎮";
+
+        document.getElementById("gamePlayerName").textContent =
+            name || "Guest Player";
+        document.getElementById("gamePlayerAvatar").textContent = avatar;
+    } catch (error) {
+        console.warn("Could not load player profile:", error);
+    }
+})();
+</script>
