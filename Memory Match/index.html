@@ -51,7 +51,16 @@
 			</div>
 		</header>
 
-		<section class="stats" aria-label="Game statistics">
+<section class="game-player-bar" aria-label="Current player">
+    <div class="game-player-avatar" id="gamePlayerAvatar">🎮</div>
+    <div class="game-player-details">
+        <span>PLAYING AS</span>
+        <strong id="gamePlayerName">Guest Player</strong>
+    </div>
+    <a href="../Game%20Hub/index.html#games">Change Profile</a>
+</section>
+
+<section class="stats" aria-label="Game statistics">
 			<div class="stat"><span>Moves</span><strong id="moves">0</strong></div>
 			<div class="stat"><span>Matches</span><strong id="matches">0 / 8</strong></div>
 			<div class="stat"><span>Time</span><strong id="time">00:00</strong></div>
@@ -145,6 +154,30 @@
         </p>
     </section>
 <p class="footer-note"><span class="dot"></span> A tiny game for a sharper mind</p>
-    <script src="script.js"></script>
+    <script>
+(() => {
+    const profileKey = "funfrogePlayerProfile";
+
+    try {
+        const profile = JSON.parse(localStorage.getItem(profileKey) || "null");
+
+        const validAvatars = ["🎮", "👾", "🚀", "🦊", "🐸", "🤖"];
+        const name = typeof profile?.name === "string"
+            ? profile.name.trim().slice(0, 18)
+            : "";
+        const avatar = validAvatars.includes(profile?.avatar)
+            ? profile.avatar
+            : "🎮";
+
+        document.getElementById("gamePlayerName").textContent =
+            name || "Guest Player";
+
+        document.getElementById("gamePlayerAvatar").textContent = avatar;
+    } catch (error) {
+        console.warn("Could not load FunFroge player profile:", error);
+    }
+})();
+</script>
+<script src="script.js"></script>
 </body>
 </html>

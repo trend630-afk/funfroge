@@ -84,3 +84,75 @@ if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         });
     });
 }
+
+/* FUNFROGE — PLAYER PROFILE SYSTEM */
+
+(() => {
+    const nameInput = document.querySelector("#playerName");
+    const avatarChoice = document.querySelector("#playerAvatarChoice");
+    const saveButton = document.querySelector("#saveProfile");
+    const profileName = document.querySelector("#profileName");
+    const profileAvatar = document.querySelector("#profileAvatar");
+    const profileMessage = document.querySelector("#profileMessage");
+
+    if (!nameInput || !avatarChoice || !saveButton) return;
+
+    const STORAGE_KEY = "funfrogePlayerProfile";
+
+    function loadProfile() {
+        try {
+            const savedProfile = JSON.parse(
+                localStorage.getItem(STORAGE_KEY)
+            );
+
+            if (!savedProfile) return;
+
+            const validAvatars = ["🎮", "👾", "🚀", "🦊", "🐸", "🤖"];
+
+            const name = typeof savedProfile.name === "string"
+                ? savedProfile.name.slice(0, 18)
+                : "";
+
+            const avatar = validAvatars.includes(savedProfile.avatar)
+                ? savedProfile.avatar
+                : "🎮";
+
+            nameInput.value = name;
+            avatarChoice.value = avatar;
+           profileName.textContent = name || "Guest Player";
+profileAvatar.textContent = avatar;
+
+profileMessage.textContent = name
+    ? "Welcome back, " + name + "! Your profile is saved on this device."
+    : "Create your player profile.";
+        } catch (error) {
+            console.warn("Could not load player profile:", error);
+        }
+    }
+
+    saveButton.addEventListener("click", () => {
+        const name = nameInput.value.trim();
+        const avatar = avatarChoice.value;
+
+        if (!name) {
+            profileMessage.textContent = "Please enter a nickname first.";
+            nameInput.focus();
+            return;
+        }
+
+        const profile = { name, avatar };
+
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+
+            profileName.textContent = name;
+            profileAvatar.textContent = avatar;
+            profileMessage.textContent = "Profile saved successfully!";
+        } catch (error) {
+            profileMessage.textContent = "Could not save profile in this browser.";
+            console.warn("Could not save player profile:", error);
+        }
+    });
+
+    loadProfile();
+})();

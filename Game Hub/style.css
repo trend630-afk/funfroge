@@ -1491,3 +1491,385 @@ a:focus-visible {
         transform: none;
     }
 }
+
+/* =====================================
+   FUNFROGE — FUTURISTIC 3D ARCADE HERO
+===================================== */
+
+.hero-3d {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    perspective: 1100px;
+    background:
+        radial-gradient(ellipse at 75% 45%, rgba(36, 110, 125, 0.19), transparent 42%),
+        linear-gradient(115deg, #080d17 0%, #10152a 55%, #090d18 100%);
+}
+
+.hero-3d .hero-copy,
+.hero-3d .hero-art-3d,
+.hero-3d .hero-index {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.18;
+    background-image:
+        linear-gradient(rgba(103, 241, 228, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(103, 241, 228, 0.12) 1px, transparent 1px);
+    background-size: 42px 42px;
+    transform: perspective(500px) rotateX(55deg) scale(1.8);
+    transform-origin: center bottom;
+    mask-image: linear-gradient(to top, black, transparent 85%);
+}
+
+.hero-glow {
+    position: absolute;
+    z-index: 0;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+.hero-glow-one {
+    top: -150px;
+    right: 10%;
+    background: rgba(40, 220, 210, 0.16);
+}
+
+.hero-glow-two {
+    bottom: -180px;
+    left: 20%;
+    background: rgba(115, 70, 255, 0.16);
+}
+
+/* 3D ARCADE CENTERPIECE */
+
+.hero-art-3d {
+    display: grid;
+    place-items: center;
+    min-height: 370px;
+    transform-style: preserve-3d;
+}
+
+.arcade-core {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 190px;
+    height: 190px;
+    border: 1px solid rgba(103, 241, 228, 0.55);
+    border-radius: 34px;
+    background: linear-gradient(145deg, #202f46, #0a1222 65%);
+    box-shadow:
+        0 0 25px rgba(103, 241, 228, 0.24),
+        0 25px 65px rgba(0, 0, 0, 0.55),
+        inset 0 0 30px rgba(103, 241, 228, 0.09);
+    transform: rotateX(12deg) rotateY(-18deg) rotateZ(-5deg);
+    animation: core-float 5s ease-in-out infinite;
+}
+
+.core-ring {
+    position: absolute;
+    inset: 13px;
+    border: 1px solid rgba(103, 241, 228, 0.4);
+    border-radius: 25px;
+    box-shadow: inset 0 0 22px rgba(103, 241, 228, 0.12);
+}
+
+.core-symbol {
+    color: #67f1e4;
+    font-size: 66px;
+    font-weight: 900;
+    letter-spacing: -8px;
+    text-shadow: 0 0 25px rgba(103, 241, 228, 0.7);
+}
+
+.core-caption {
+    position: absolute;
+    bottom: 20px;
+    color: #a8c5d5;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.arcade-orbit {
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    border: 1px solid rgba(103, 241, 228, 0.3);
+    border-radius: 50%;
+    transform: rotateX(65deg) rotateZ(-25deg);
+    box-shadow: 0 0 20px rgba(103, 241, 228, 0.08);
+}
+
+.orbit-two {
+    width: 350px;
+    height: 350px;
+    border-color: rgba(160, 110, 255, 0.25);
+    transform: rotateX(65deg) rotateZ(35deg);
+}
+
+.floating-tile {
+    position: absolute;
+    z-index: 4;
+    display: grid;
+    place-items: center;
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(103, 241, 228, 0.5);
+    border-radius: 15px;
+    background: rgba(17, 32, 49, 0.85);
+    color: #67f1e4;
+    font-size: 27px;
+    box-shadow: 0 0 25px rgba(103, 241, 228, 0.15);
+    backdrop-filter: blur(8px);
+}
+
+.tile-one {
+    top: 12%;
+    left: 17%;
+    animation: tile-float-one 5s ease-in-out infinite;
+}
+
+.tile-two {
+    top: 20%;
+    right: 13%;
+    color: #bd9aff;
+    border-color: rgba(189, 154, 255, 0.5);
+    animation: tile-float-two 6s ease-in-out infinite;
+}
+
+.tile-three {
+    bottom: 17%;
+    left: 15%;
+    color: #ffe17b;
+    border-color: rgba(255, 225, 123, 0.5);
+    animation: tile-float-two 5.5s ease-in-out infinite;
+}
+
+.tile-four {
+    right: 16%;
+    bottom: 12%;
+    color: #ff8bc8;
+    border-color: rgba(255, 139, 200, 0.5);
+    animation: tile-float-one 6s ease-in-out infinite;
+}
+
+.arcade-status {
+    position: absolute;
+    z-index: 5;
+    padding: 10px 14px;
+    border: 1px solid rgba(103, 241, 228, 0.25);
+    border-radius: 8px;
+    background: rgba(7, 14, 25, 0.82);
+    color: #c5e8e8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    backdrop-filter: blur(10px);
+}
+
+.status-top {
+    top: 7%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: #67f1a8;
+    box-shadow: 0 0 10px #67f1a8;
+}
+
+.status-bottom {
+    bottom: 5%;
+    display: flex;
+    gap: 18px;
+    color: #8da5b8;
+}
+
+.status-bottom span:first-child {
+    color: #67f1e4;
+}
+
+@keyframes core-float {
+    0%, 100% {
+        transform: translateY(0) rotateX(12deg) rotateY(-18deg) rotateZ(-5deg);
+    }
+    50% {
+        transform: translateY(-13px) rotateX(17deg) rotateY(-10deg) rotateZ(0deg);
+    }
+}
+
+@keyframes tile-float-one {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(9deg); }
+}
+
+@keyframes tile-float-two {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(13px) rotate(8deg); }
+}
+
+/* MOBILE LAYOUT */
+
+@media (max-width: 760px) {
+    .hero-3d {
+        gap: 10px;
+    }
+
+    .hero-art-3d {
+        min-height: 310px;
+        margin-top: 15px;
+    }
+
+    .arcade-core {
+        width: 150px;
+        height: 150px;
+    }
+
+    .core-symbol {
+        font-size: 52px;
+    }
+
+    .arcade-orbit {
+        width: 230px;
+        height: 230px;
+    }
+
+    .orbit-two {
+        width: 285px;
+        height: 285px;
+    }
+
+    .floating-tile {
+        width: 43px;
+        height: 43px;
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arcade-core,
+    .floating-tile {
+        animation: none;
+    }
+}
+
+/* FUNFROGE — PLAYER PROFILE DASHBOARD */
+
+.player-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 28px;
+    margin: 25px 0;
+    padding: 25px;
+    border: 1px solid rgba(103, 241, 228, 0.3);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(103, 241, 228, 0.12), transparent 45%),
+        linear-gradient(135deg, #141d30, #0b111e);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.player-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.player-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 76px;
+    height: 76px;
+    border: 1px solid rgba(103, 241, 228, 0.55);
+    border-radius: 20px;
+    background: rgba(103, 241, 228, 0.09);
+    font-size: 38px;
+    box-shadow: 0 0 24px rgba(103, 241, 228, 0.12);
+}
+
+.player-heading h3 {
+    margin: 7px 0;
+    color: #f1f5ff;
+    font-size: 23px;
+}
+
+.profile-status {
+    margin: 0;
+    color: #9aa9bd;
+    font-size: 13px;
+}
+
+.profile-editor {
+    display: grid;
+    gap: 9px;
+}
+
+.profile-editor label {
+    margin-top: 5px;
+    color: #b9c9dc;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.profile-editor input,
+.profile-editor select {
+    width: 100%;
+    min-height: 43px;
+    padding: 10px 12px;
+    border: 1px solid #344257;
+    border-radius: 9px;
+    outline: none;
+    background: #0a1220;
+    color: #f1f5ff;
+    font: inherit;
+}
+
+.profile-editor input:focus,
+.profile-editor select:focus {
+    border-color: #67f1e4;
+    box-shadow: 0 0 0 3px rgba(103, 241, 228, 0.1);
+}
+
+.profile-editor button {
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#profileMessage {
+    min-height: 18px;
+    margin: 3px 0 0;
+    color: #8fa5b9;
+    font-size: 12px;
+}
+
+@media (max-width: 700px) {
+    .player-panel {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 19px;
+    }
+
+    .player-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+    }
+}

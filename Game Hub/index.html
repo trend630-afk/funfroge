@@ -109,6 +109,47 @@
 				</div>
 				<p class="section-aside">Small games. Big replay energy.</p>
 			</div>
+
+<div class="player-panel" id="playerProfile">
+    <div class="player-heading">
+        <div class="player-avatar" id="profileAvatar">🎮</div>
+        <div>
+            <p class="card-category">YOUR ARCADE ID</p>
+            <h3 id="profileName">Guest Player</h3>
+            <p class="profile-status">Your personal gaming profile</p>
+        </div>
+    </div>
+
+    <div class="profile-editor">
+        <label for="playerName">Choose your nickname</label>
+        <input
+            type="text"
+            id="playerName"
+            maxlength="18"
+            placeholder="Enter nickname"
+            autocomplete="nickname"
+        >
+
+        <label for="playerAvatarChoice">Choose your avatar</label>
+        <select id="playerAvatarChoice">
+            <option value="🎮">🎮 Gamer</option>
+            <option value="👾">👾 Alien</option>
+            <option value="🚀">🚀 Explorer</option>
+            <option value="🦊">🦊 Fox</option>
+            <option value="🐸">🐸 Frog</option>
+            <option value="🤖">🤖 Robot</option>
+        </select>
+
+        <button class="button button-primary" id="saveProfile" type="button">
+            Save profile
+        </button>
+
+        <p id="profileMessage" role="status" aria-live="polite">
+            Your profile will be saved on this device.
+        </p>
+    </div>
+</div>
+
 			<div class="library-controls">
 				<label class="game-search" for="gameSearch">
 					<span>Search games</span>
