@@ -26,7 +26,15 @@
 	</header>
 
 	<main class="game-shell">
-		<section class="game-heading" aria-labelledby="gameTitle">
+		<section class="game-player-bar" aria-label="Current player">
+    <div class="game-player-avatar" id="gamePlayerAvatar">🎮</div>
+    <div class="game-player-details">
+        <span>PLAYING AS</span>
+        <strong id="gamePlayerName">Guest Player</strong>
+    </div>
+    <a href="../Game%20Hub/index.html#games">Change Profile</a>
+</section>
+<section class="game-heading" aria-labelledby="gameTitle">
 			<div>
 				<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> DEEP SPACE / SURVIVAL RUN</p>
 				<h1 id="gameTitle">Space <span>Dodger</span></h1>
@@ -82,5 +90,27 @@
 		<span>© 2026 FunFroge Games</span>
 		<span class="footer-note">STAY IN THE FLIGHT PATH</span>
 	</footer>
+<script>
+(() => {
+    try {
+        const profile = JSON.parse(
+            localStorage.getItem("funfrogePlayerProfile") || "null"
+        );
+        const validAvatars = ["🎮", "👾", "🚀", "🦊", "🐸", "🤖"];
+        const name = typeof profile?.name === "string"
+            ? profile.name.trim().slice(0, 18)
+            : "";
+        const avatar = validAvatars.includes(profile?.avatar)
+            ? profile.avatar
+            : "🎮";
+
+        document.getElementById("gamePlayerName").textContent =
+            name || "Guest Player";
+        document.getElementById("gamePlayerAvatar").textContent = avatar;
+    } catch (error) {
+        console.warn("Could not load player profile:", error);
+    }
+})();
+</script>
 </body>
 </html>
