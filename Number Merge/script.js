@@ -33,6 +33,9 @@ let bestScore = loadBestScore();
 let nextTileId = 1;
 let undoHistory = [];
 let gameOver = false;
+if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "numberMerge" });
+}
 let wonThisGame = false;
 let newBestThisGame = false;
 let recordSoundPlayed = false;
@@ -416,8 +419,7 @@ function undoMove() {
 	board = cloneBoard(previousState.board);
 	score = previousState.score;
 	gameOver = false;
-	if (typeof updateFunFrogeStats === "function") {
-    updateFunFrogeStats("started", { game: "numberMerge" });
+	
 }
 	gameOverPanel.hidden = true;
 	newBestMessage.hidden = true;
