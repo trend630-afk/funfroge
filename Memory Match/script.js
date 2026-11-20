@@ -130,7 +130,7 @@ function updateBestScoreDisplay() {
     const bestScore = getBestScoreValue();
     bestScoreElement.textContent = bestScore === null ? "--" : String(bestScore);
 }
-
+ 
 // PLAYER STATISTICS
 function getPlayerStats() {
     const defaults = {
@@ -215,6 +215,10 @@ function recordCompletedGame() {
     if (currentScore > stats.highestScore) stats.highestScore = currentScore;
     savePlayerStats(stats);
     updatePlayerStatsDisplay();
+    updateFunFrogeStats("completed", {
+    game: "memoryMatch",
+    score: currentScore
+});
 }
 
 // ACHIEVEMENTS
@@ -587,11 +591,12 @@ function resetTurn() {
 function flipCard() {
     if (lockBoard || this === firstCard || this.classList.contains("matched")) return;
 
-    if (!gameStarted) {
-        gameStarted = true;
-        recordGameStarted();
-        startTimer();
-    }
+   if (!gameStarted) {
+    gameStarted = true;
+    recordGameStarted();
+    updateFunFrogeStats("started", { game: "memoryMatch" });
+    startTimer();
+}
 
     this.classList.add("flipped");
     this.setAttribute("aria-label", `Card ${this.dataset.symbol}`);

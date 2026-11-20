@@ -182,6 +182,9 @@ async function shareResult() {
 }
 function startGame() {
   clearRoundTimers(); ensureUpgradeHud(); phase="playing"; score=0; hits=0; misses=0; decoysHit=0; combo=0; wave=1;
+  if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "neonTargetRush" });
+}
   deadline=performance.now()+ROUND_LENGTH_MS; comboToast.classList.remove("is-visible"); fxLayer.replaceChildren();
   newBestMessage.hidden=true; roundResults.hidden=true; gameOverlay.hidden=true; playfield.classList.remove("is-miss");
   playfield.classList.add("is-active"); fieldState.textContent="IN PLAY"; overlayKicker.textContent="30-SECOND ARCADE RUN";
@@ -199,6 +202,12 @@ function finishGame() {
   roundResults.hidden=false; newBestMessage.hidden=!isNewBest; overlayKicker.textContent="ROUND COMPLETE"; overlayTitle.textContent="TIME'S UP!";
   overlayCopy.textContent=`${decoysHit} decoys hit · ${wave} waves reached. Ready to beat that score?`; startButtonLabel.textContent="Play again"; gameOverlay.hidden=false;
   gameAnnouncement.textContent=`Time's up. Final score ${score}. ${hits} hits. Accuracy ${accuracy} percent.${isNewBest?" New best score.":""}`;
+  if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("completed", {
+    game: "neonTargetRush",
+    score: score
+});
+}
   playSound("end"); startButton.focus({preventScroll:true});
 }
 function toggleSound() {

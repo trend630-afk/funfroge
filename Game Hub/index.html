@@ -150,6 +150,45 @@
     </div>
 </div>
 
+<section class="player-stats-dashboard" id="playerStatsDashboard">
+    <div class="section-heading">
+        <p class="card-category">YOUR ARCADE PERFORMANCE</p>
+        <h2>Player Statistics</h2>
+        <p>Track your gaming progress across FunFroge.</p>
+    </div>
+
+    <div class="stats-overview">
+        <div class="stat-card">
+            <span>Games Played</span>
+            <strong id="totalGamesPlayed">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Games Completed</span>
+            <strong id="totalGamesCompleted">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <span>Games Available</span>
+            <strong id="totalGamesAvailable">5</strong>
+        </div>
+    </div>
+
+    <div class="stats-game-list">
+        <h3>Game Performance</h3>
+        <div id="gameStatsList">
+            Loading your statistics...
+        </div>
+    </div>
+
+    <div class="stats-activity">
+        <h3>Recent Activity</h3>
+        <div id="recentGameActivity">
+            No activity yet. Start playing!
+        </div>
+    </div>
+</section>
+
 			<div class="library-controls">
 				<label class="game-search" for="gameSearch">
 					<span>Search games</span>
@@ -277,5 +316,6 @@
 			<a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a>
 		</nav>
 	</footer>
+<script src="../profile-stats.js"></script>
 </body>
 </html>

@@ -156,3 +156,75 @@ profileMessage.textContent = name
 
     loadProfile();
 })();
+
+/* FUNFROGE — PLAYER STATISTICS DASHBOARD */
+
+(function () {
+    const storageKey = "funfrogeArcadeStats";
+
+    const gameNames = {
+        memoryMatch: "Memory Match",
+        reactionRush: "Reaction Rush",
+        neonTargetRush: "Neon Target Rush",
+        spaceDodger: "Space Dodger",
+        numberMerge: "Number Merge"
+    };
+
+    function loadDashboard() {
+        const stats = JSON.parse(
+            localStorage.getItem(storageKey) || "{}"
+        );
+
+        document.getElementById("totalGamesPlayed").textContent =
+            Number(stats.gamesPlayed) || 0;
+
+        document.getElementById("totalGamesCompleted").textContent =
+            Number(stats.gamesCompleted) || 0;
+
+        const gameStatsList = document.getElementById("gameStatsList");
+        gameStatsList.textContent = "";
+
+        Object.entries(gameNames).forEach(([key, name]) => {
+            const game = stats.games?.[key] || {};
+
+            const item = document.createElement("div");
+            item.className = "game-stat-item";
+
+            const title = document.createElement("strong");
+            title.textContent = name;
+
+            const details = document.createElement("p");
+            details.textContent =
+                `Played: ${Number(game.plays) || 0} | ` +
+                `Completed: ${Number(game.completions) || 0} | ` +
+                `Best score: ${Number(game.bestScore) || 0}`;
+
+            item.append(title, details);
+            gameStatsList.appendChild(item);
+        });
+
+        const activityList = document.getElementById("recentGameActivity");
+        activityList.textContent = "";
+
+        const activities = stats.recentActivity || [];
+
+        if (activities.length === 0) {
+            activityList.textContent = "No activity yet. Start playing!";
+            return;
+        }
+
+        activities.slice(0, 10).forEach((activity) => {
+            const item = document.createElement("p");
+            const gameName = gameNames[activity.game] || activity.game;
+
+            item.textContent =
+                `${gameName} — ${activity.event} — Score: ${Number(activity.score) || 0}`;
+
+            activityList.appendChild(item);
+        });
+    }
+
+    loadDashboard();
+
+    window.addEventListener("pageshow", loadDashboard);
+})();

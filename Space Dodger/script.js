@@ -543,6 +543,9 @@ function resetGameState() {
 function startGame() {
 	resetGameState();
 	gameState = "running";
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "spaceDodger" });
+}
 	stage.classList.add("is-playing");
 	gameOverlay.hidden = true;
 	overlayKicker.textContent = "READY FOR LAUNCH";
@@ -586,6 +589,12 @@ function finishGame() {
 	gameOverlay.hidden = false;
 	updateHud(true);
 	gameAnnouncement.textContent = `Mission failed. Final score ${score}. Survival time ${formatTime(elapsedTime)}.${newRecord ? " New best score." : ""}`;
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("completed", {
+        game: "spaceDodger",
+        score: score
+    });
+}
 }
 
 function setMovement(direction, active) {

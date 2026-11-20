@@ -1873,3 +1873,107 @@ a:focus-visible {
         font-size: 32px;
     }
 }
+
+/* FUNFROGE — PLAYER STATISTICS DASHBOARD */
+
+.player-stats-dashboard {
+    margin: 35px 0;
+    padding: 28px;
+    border: 1px solid rgba(91, 150, 255, 0.25);
+    border-radius: 20px;
+    background: linear-gradient(145deg, #101b30, #080d18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.player-stats-dashboard .section-heading {
+    margin-bottom: 24px;
+}
+
+.player-stats-dashboard .section-heading h2 {
+    margin: 8px 0;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.player-stats-dashboard .section-heading p {
+    color: #9eacc3;
+}
+
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    padding: 22px;
+    border: 1px solid rgba(88, 156, 255, 0.3);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #172b49, #101a2b);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(40, 120, 255, 0.18);
+}
+
+.stat-card span {
+    display: block;
+    color: #a9bad4;
+    font-size: 13px;
+}
+
+.stat-card strong {
+    display: block;
+    margin-top: 10px;
+    color: #55c7ff;
+    font-size: 32px;
+}
+
+.stats-game-list,
+.stats-activity {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 15px;
+    background: rgba(5, 12, 24, 0.65);
+}
+
+.stats-game-list h3,
+.stats-activity h3 {
+    margin: 0 0 16px;
+    color: #ffffff;
+}
+
+.game-stat-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-stat-item:last-child {
+    border-bottom: none;
+}
+
+.game-stat-item strong {
+    color: #68caff;
+}
+
+.game-stat-item p,
+.stats-activity p {
+    margin: 7px 0 0;
+    color: #a9bad4;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .stats-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .player-stats-dashboard {
+        padding: 18px;
+    }
+}

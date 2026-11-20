@@ -416,6 +416,9 @@ function undoMove() {
 	board = cloneBoard(previousState.board);
 	score = previousState.score;
 	gameOver = false;
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "numberMerge" });
+}
 	gameOverPanel.hidden = true;
 	newBestMessage.hidden = true;
 	clearWinNotice();
@@ -433,6 +436,12 @@ function finishGame() {
 	gameOverPanel.hidden = false;
 	undoButton.disabled = undoHistory.length === 0;
 	gameAnnouncement.textContent = `Game over. Final score ${formatNumber(score)}. Best score ${formatNumber(bestScore)}.`;
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("completed", {
+        game: "numberMerge",
+        score: score
+    });
+}
 	playSound("gameOver");
 }
 

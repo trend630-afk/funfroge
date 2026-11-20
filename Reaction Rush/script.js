@@ -140,6 +140,9 @@ function setPadState(state, message, caption, icon, ariaLabel) {
 function startGame() {
 	clearRoundTimer();
 	gameState = "waiting";
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "reactionRush" });
+}
 	roundResults = [];
 	roundNumber = 0;
 	score = 0;
@@ -153,6 +156,7 @@ function startGame() {
 	scorePop.classList.remove("is-visible");
 	updateStats();
 	gameAnnouncement.textContent = "Game started. Wait for the CLICK NOW signal.";
+
 	playSound("start");
 	beginRound();
 }
@@ -271,6 +275,12 @@ function finishGame() {
 	setPadState("results", "RESULTS", "Five rounds complete", "✓", "Reaction Rush results");
 	updateStats();
 	gameAnnouncement.textContent = `Results. Score ${score}. Average reaction ${formatMilliseconds(average)}. ${getReactionRating(average)}.`;
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("completed", {
+        game: "reactionRush",
+        score: score
+    });
+}
 	if (newBestScoreThisGame || newBestReactionThisGame) playSound("newBest");
 	playSound("results");
 }
