@@ -282,6 +282,9 @@ function startNewGame() {
 	score = 0;
 	undoHistory = [];
 	gameOver = false;
+	if (typeof updateFunFrogeStats === "function") {
+    updateFunFrogeStats("started", { game: "numberMerge" });
+}
 	wonThisGame = false;
 	newBestThisGame = false;
 	recordSoundPlayed = false;
